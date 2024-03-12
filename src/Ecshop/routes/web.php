@@ -22,10 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//商品リスト
-Route::get('/', [ProductController::class, 'productList'])->name('productList');
+
 require __DIR__.'/auth.php';
 
+//商品リスト
+Route::get('/', [ProductController::class, 'productList'])->name('productList');
+Route::get('/product/show/{product_id}', [ProductController::class, 'productShow'])->name('productShow');
 Route::get('/test', function() {
     return view('test');
 });
